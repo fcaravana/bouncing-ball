@@ -66,7 +66,7 @@ app.ball = function() {
     var _yPosition = 1;
 
     var _xVelocity = 8;
-    var _yVelocity = 0;
+    var _yVelocity = 8;
 
     var _endBounce = 0;
 
@@ -109,9 +109,14 @@ app.ball = function() {
     _setInitialVelocity = function() {
 
         _xVelocity = _randomIntFromInterval(1, 30);
+        _yVelocity = _randomIntFromInterval(1, 30);
 
         if (_xVelocity % 2 === 0) {
             _xVelocity = -_xVelocity;
+        }
+
+        if (_yVelocity % 2 === 0) {
+            _yVelocity = -_yVelocity;
         }
 
     };
@@ -150,6 +155,12 @@ app.ball = function() {
         /* count bounces when hit bottom wall  */
         if (Math.floor(_yPosition) === (_canvas.height() - _ballRadius)) {
             _endBounce++;
+        }
+
+        /* hit top wall */
+        if (_yPosition < _ballRadius) {
+            _yPosition = _ballRadius;
+            _yVelocity *= -_velocityReductionFactor;
         }
 
         /* hit bottom wall */
