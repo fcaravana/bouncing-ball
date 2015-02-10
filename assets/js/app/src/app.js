@@ -8,7 +8,7 @@ app = {
 /**
  * On document click.
  */
-$(document).click(function() {
+$(document).click(function(event) {
 
     if (app.animation !== null) {
         app.animation.stopAnimation();
@@ -17,6 +17,7 @@ $(document).click(function() {
     }
 
     app.animation = new app.ball();
+    app.animation.setInitialPosition(event.pageX, event.pageY);
     app.animation.startAnimation();
 
 });
@@ -48,7 +49,6 @@ app.ball = function() {
      * @type {string} _ballColor ball color
      * @type {number} _xPosition x position
      * @type {number} _yPosition y position
-     * @type {number} _initialVelocity x initial elocity
      * @type {number} _xVelocity x velocity
      * @type {number} _yVelocity y velocity
      * @type {number} _endBounce bounces to stop ball
@@ -65,7 +65,6 @@ app.ball = function() {
     var _xPosition = 1;
     var _yPosition = 1;
 
-    var _initialVelocity = 8;
     var _xVelocity = 8;
     var _yVelocity = 0;
 
@@ -80,7 +79,6 @@ app.ball = function() {
 
         _resizeCanvas();
         _setInitialVelocity();
-        _setInitialPosition();
 
         _animation = setInterval(_updatePosition, 1000 / 60);
 
@@ -110,18 +108,24 @@ app.ball = function() {
      */
     _setInitialVelocity = function() {
 
-        _xVelocity = _randomIntFromInterval(8, 36);
-        _initialVelocity = _xVelocity;
+        _xVelocity = _randomIntFromInterval(1, 30);
+
+        if (_xVelocity % 2 === 0) {
+            _xVelocity = -_xVelocity;
+        }
 
     };
 
     /**
      * Set ball initial position.
+     * 
+     * @param {number} x click x position
+     * @param {number} y click y position
      */
-    _setInitialPosition = function() {
+    _setInitialPosition = function(x, y) {
 
-        _xPosition = _randomIntFromInterval(_ballRadius, ($(window).width() - _ballRadius));
-        _yPosition = _ballRadius;
+        _xPosition = x;
+        _yPosition = y;
 
     };
 
@@ -158,7 +162,7 @@ app.ball = function() {
         /* hit left wall */
         if (_xPosition < _ballRadius) {
             _xPosition = _ballRadius;
-            _xVelocity = _initialVelocity;
+            _xVelocity = -_xVelocity;
             _reduceVelocity();
         }
 
@@ -193,7 +197,6 @@ app.ball = function() {
 
         if (_xVelocity > 0) {
             _xVelocity = parseInt(_xVelocity / 1.5);
-            _initialVelocity = _xVelocity;
         }
 
     };
@@ -201,8 +204,8 @@ app.ball = function() {
     /**
      * Get random number between minimal and maximum value.
      * 
-     * @param {integer} min minimal value
-     * @param {integer} max maximum value
+     * @param {number} min minimal value
+     * @param {number} max maximum value
      */
     _randomIntFromInterval = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -214,6 +217,7 @@ app.ball = function() {
     return {
         startAnimation: _startAnimation,
         stopAnimation: _stopAnimation,
-        resizeCanvas: _resizeCanvas
+        resizeCanvas: _resizeCanvas,
+        setInitialPosition: _setInitialPosition
     };
 };
