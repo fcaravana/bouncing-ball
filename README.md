@@ -36,6 +36,7 @@ $ bower install
 $ cd bouncing-ball
 $ npm install -g gulp
 $ gulp default
+```
 
 ### Open in the browser
 
