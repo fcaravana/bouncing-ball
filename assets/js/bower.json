@@ -11,7 +11,7 @@
     "bouncing",
     "ball"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
   "ignore": [
     "**/.*",
