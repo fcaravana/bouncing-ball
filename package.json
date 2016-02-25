@@ -1,0 +1,23 @@
+{
+  "name": "bouncing-ball",
+  "version": "1.0.0",
+  "description": "Bouncing Ball",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fcaravana/bouncing-ball"
+  },
+  "keywords": [
+    "bouncing",
+    "ball"
+  ],
+  "author": "Francisco Caravana <fcaravana@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcaravana/bouncing-ball/issues"
+  },
+  "homepage": "https://github.com/fcaravana/bouncing-ball"
+}
