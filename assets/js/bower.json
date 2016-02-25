@@ -1,0 +1,27 @@
+{
+  "name": "bouncing-ball",
+  "homepage": "https://github.com/fcaravana/bouncing-ball",
+  "authors": [
+    "Francisco Caravana <fcaravana@gmail.com>"
+  ],
+  "description": "Bouncing Ball",
+  "main": "main.js",
+  "moduleType": [],
+  "keywords": [
+    "bouncing",
+    "ball"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "wow": "^1.1.2"
+  }
+}
