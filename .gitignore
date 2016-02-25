@@ -1,2 +1,6 @@
 /node_modules/
 /assets/js/bower_components/
+/assets/js/libs/
+/assets/js/main.min.js
+/assets/css/libs/
+/assets/css/style.min.css
