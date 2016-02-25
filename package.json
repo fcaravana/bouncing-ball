@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-concat": "~2.2.0",
-    "gulp-jshint": "~1.5.1",
-    "gulp-uglify": "~0.2.1"
-  }
-}
